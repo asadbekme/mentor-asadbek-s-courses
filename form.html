@@ -1,0 +1,59 @@
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Login Formasi</h2>
+    <form id="loginForm">
+      <div>
+        <label for="username">Foydalanuvchi nomi:</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div>
+        <label for="password">Parol:</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <div>
+        <button type="submit">Kirish</button>
+      </div>
+    </form>
+
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Formani yuborish jarayonini to'xtatadi
+          let username = document.getElementById("username").value;
+          let password = document.getElementById("password").value;
+          console.log("Foydalanuvchi nomi:", username);
+          console.log("Parol:", password);
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Section</title>
+    <style>
+      .hero {
+        height: 75vh;
+        position: relative;
+        background-color: #1a3c78; /* Or your desired color */
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
+        clip-path: polygon(
+          100% 0,
+          100% 84%,
+          84% 72%,
+          62% 100%,
+          25% 100%,
+          0 74%,
+          0 0
+        );
+      }
+
+      .hero h1 {
+        font-size: 2.5em;
+        margin: 20px 0;
+      }
+
+      .hero p {
+        margin: 10px 0 30px;
+      }
+
+      .hero .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .hero button {
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .btn-secondary {
+        background-color: #f0f0f0;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hero">
+      <h1>In-depth, demanding courses</h1>
+      <p>
+        We know how large objects will act, but things on a small scale just do
+        not act that way.
+      </p>
+      <div class="buttons">
+        <button class="btn-primary">Join Us</button>
+        <button class="btn-secondary">Learn More</button>
+      </div>
+    </main>
+  </body>
+</html>
