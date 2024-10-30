@@ -51,5 +51,27 @@ const joinStrings = (s1, s2) => {
   return result;
 };
 
-console.log(joinStrings("abc", "xyz")); // axbycz
-console.log(joinStrings("Hello!", "guy")); // Hgeulylo!
+// console.log(joinStrings("abc", "xyz")); // axbycz
+// console.log(joinStrings("Hello!", "guy")); // Hgeulylo!
+
+// * 4. Merge Sorted Arrays (Sorting Algorithm)
+function mergeSortedArrays(arr1, arr2) {
+  let result = [];
+  let i = 0,
+    j = 0;
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      result.push(arr1[i]);
+      i++;
+    } else {
+      result.push(arr2[j]);
+      j++;
+    }
+  }
+
+  return result.sort((a, b) => a - b);
+}
+
+console.log(mergeSortedArrays([1, 3, 5], [2, 4, 6])); // [1, 2, 3, 4, 5, 6]
+console.log(mergeSortedArrays([1, 4, 5], [3, 2, 6])); // [1, 2, 3, 4, 5, 6]
