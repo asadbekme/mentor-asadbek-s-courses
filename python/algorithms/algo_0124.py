@@ -4,9 +4,13 @@ array = list(map(int, input().split()))
 k = int(input())
 
 max_element = max(array)
+new_array = []
 
-for index in range(n):
-    if array[index] == max_element:
-        array[index], array[k - 1] = array[k - 1], max_element
+for element in array:
+    if element != max_element:
+        new_array.append(element)
+    else:
+        new_array.append(array[k - 1])
 
-print(*array)
+new_array[k - 1] = max_element
+print(*new_array)
