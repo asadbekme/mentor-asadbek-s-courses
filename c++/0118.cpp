@@ -5,13 +5,13 @@ using namespace std;
 int main() {
     int n, sum = 0, count = 0;
     cin >> n;
-    vector<int> v(n);
+    vector<int> array(n);
     for (int i = 0; i < n; i++) {
-        cin >> v[i];
+        cin >> array[i];
     }
     
-    for (int element : v) {
-        if (element % 2 == 1 || element % 2 == -1) {
+    for (int element : array) {
+        if (element % 2 == 1) {
             sum += element;
             count += 1;
         }
