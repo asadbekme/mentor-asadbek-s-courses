@@ -1,15 +1,15 @@
+from math import ceil
+
 n = int(input())
 array = list(map(int, input().split()))
 
-total_sum, odd_count = 0, 0
-
+new_array = []
 for element in array:
     if element % 2 == 1:
-        odd_count += 1
-        total_sum += element
+        new_array.append(element)
+average = sum(new_array) / len(new_array)
 
-if odd_count == 0:
-    print("0.00")
-else:
-    average = total_sum / odd_count
-    print(f"{average:.2f}")
+if (average * 1000) % 10 == 5:
+    average = ceil(average * 10 ** 2) / 10 ** 2
+
+print("%.2f" % average)
