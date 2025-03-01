@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Practice</title>
+    <style>
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .services__cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .services__card {
+        flex: 1 1 300px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        transition: transform 0.2s ease-in-out;
+      }
+      .services__card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="services__cards">
+        <div class="services__card">
+          <img
+            src="https://medical-assistance-shovot.vercel.app/images/circle-check.svg"
+            alt="circle check icon"
+          />
+          <h4 class="services__card-title">Ovqat hazm qilish muammolari</h4>
+          <p class="services__card-description">
+            Ular juda yumshoq va og'riqli joyni tark etmaydilar. U o'z oilasiga
+            xizmat ko'rsatishni xohlaydi.
+          </p>
+        </div>
+
+        <div class="services__card">
+          <img
+            src="https://medical-assistance-shovot.vercel.app/images/circle-check.svg"
+            alt="circle check icon"
+          />
+          <h4 class="services__card-title">Gormonal salomatlik</h4>
+          <p class="services__card-description">
+            Ular juda yumshoq va og'riqli joyni tark etmaydilar. U o'z oilasiga
+            xizmat ko'rsatishni xohlaydi.
+          </p>
+        </div>
+        <div class="services__card">
+          <img
+            src="https://medical-assistance-shovot.vercel.app/images/circle-check.svg"
+            alt="circle check icon"
+          />
+          <h4 class="services__card-title">Otoimmün va yallig'lanish</h4>
+          <p class="services__card-description">
+            Ular juda yumshoq va og'riqli joyni tark etmaydilar. U o'z oilasiga
+            xizmat ko'rsatishni xohlaydi.
+          </p>
+        </div>
+
+        <div class="services__card">
+          <img
+            src="https://medical-assistance-shovot.vercel.app/images/circle-check.svg"
+            alt="circle check icon"
+          />
+          <h4 class="services__card-title">Yurak salomatligi</h4>
+          <p class="services__card-description">
+            Ular juda yumshoq va og'riqli joyni tark etmaydilar. U o'z oilasiga
+            xizmat ko'rsatishni xohlaydi.
+          </p>
+        </div>
+        <div class="services__card">
+          <img
+            src="https://medical-assistance-shovot.vercel.app/images/circle-check.svg"
+            alt="circle check icon"
+          />
+          <h4 class="services__card-title">Ruhiy farovonlik</h4>
+          <p class="services__card-description">
+            Ular juda yumshoq va og'riqli joyni tark etmaydilar. U o'z oilasiga
+            xizmat ko'rsatishni xohlaydi.
+          </p>
+        </div>
+
+        <div class="services__card">
+          <img
+            src="https://medical-assistance-shovot.vercel.app/images/circle-check.svg"
+            alt="circle check icon"
+          />
+          <h4 class="services__card-title">Pediatriya yordami</h4>
+          <p class="services__card-description">
+            Ular juda yumshoq va og'riqli joyni tark etmaydilar. U o'z oilasiga
+            xizmat ko'rsatishni xohlaydi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

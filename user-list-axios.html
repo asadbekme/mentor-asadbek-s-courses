@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foydalanuvchilar Ro'yxati</title>
+    <!-- CSS -->
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .user__title {
+        text-align: center;
+        color: #2c3e50;
+      }
+      .user__list {
+        list-style-type: none;
+        padding: 0;
+      }
+      .user__card {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 10px;
+        transition: transform 0.2s ease-in-out;
+      }
+      .user__card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      .user__name {
+        color: #3498db;
+        margin: 0;
+      }
+      .user__email {
+        color: #7f8c8d;
+        margin: 0;
+      }
+      #loading,
+      #message {
+        text-align: center;
+        font-style: italic;
+        color: #7f8c8d;
+      }
+      form {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      input {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+      }
+      button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HTML -->
+    <h1 class="user__title">Foydalanuvchilar Ro'yxati va Yaratish</h1>
+    <h2 class="user__title">Yangi Foydalanuvchi Qo'shish</h2>
+    <form id="createUserForm">
+      <input type="text" id="name" placeholder="Ism" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <button type="submit">Qo'shish</button>
+    </form>
+
+    <div class="message"></div>
+    <div id="loading">Ma'lumotlar yuklanmoqda...</div>
+    <ul class="user__list" id="userList"></ul>
+
+    <!-- JavaScript -->
+    <!-- Axios kutubxonasini qo'shamiz -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const userList = document.getElementById("userList");
+      const loading = document.getElementById("loading");
+      const createUserForm = document.getElementById("createUserForm");
+      const messageDiv = document.getElementById("message");
+
+      async function getUsers() {
+        try {
+          // fetch o'rniga axios'dan foydalanamiz
+          const response = await axios.get(
+            "https://jsonplaceholder.typicode.com/users"
+          );
+          const users = response.data;
+          console.log(response);
+          loading.style.display = "none";
+          displayUsers(users);
+        } catch (error) {
+          console.error("Xatolik yuz berdi:", error);
+          loading.textContent = "Ma'lumotlarni yuklashda xatolik yuz berdi.";
+        }
+      }
+
+      function displayUsers(users) {
+        users.forEach((user) => {
+          const li = document.createElement("li");
+          li.className = "user__card";
+          li.innerHTML = `
+                    <h3 class="user__name">${user.name}</h3>
+                    <p class="user__email">${user.email}</p>
+                `;
+          userList.appendChild(li);
+        });
+      }
+
+      async function createUser(name, email) {
+        try {
+          const response = await axios.post(
+            "https://jsonplaceholder.typicode.com/users",
+            {
+              name: name,
+              email: email,
+            }
+          );
+          return response.data;
+        } catch (error) {
+          console.error("Foydalanuvchi yaratishda xatolik:", error);
+          throw error;
+        }
+      }
+
+      createUserForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+
+        try {
+          const newUser = await createUser(name, email);
+          console.log(newUser);
+          messageDiv.textContent = "Foydalanuvchi muvaffaqiyatli yaratildi!";
+          messageDiv.style.color = "green";
+
+          // Yangi foydalanuvchini ro'yxatga qo'shamiz
+          const li = document.createElement("li");
+          li.className = "user__card";
+          li.innerHTML = `
+                    <div class="user__name">${newUser.name}</div>
+                    <div class="user__email">${newUser.email}</div>
+                `;
+          userList.insertBefore(li, userList.firstChild);
+
+          // Formani tozalaymiz
+          createUserForm.reset();
+        } catch (error) {
+          messageDiv.textContent =
+            "Foydalanuvchi yaratishda xatolik yuz berdi.";
+          messageDiv.style.color = "red";
+        }
+      });
+
+      getUsers();
+    </script>
+  </body>
+</html>

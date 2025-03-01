@@ -149,3 +149,11 @@ if not array:
     
 bubbleSort(array)
 print(array)
+
+# * 5-algorithm.
+# n = int(input())
+# p = 1
+# for i in range(1, n + 1):
+#     p *= (i + 0.1)
+
+# print("%.2f" % p)
